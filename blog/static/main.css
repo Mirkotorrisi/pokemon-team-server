@@ -2,10 +2,17 @@
   background-color: rgb(57, 87, 88);
   color: rgb(255, 255, 255)
 }
+@font-face {
+  font-family: pokemonHollow;
+  src: url("Pokemon-Hollow.otf");
+}
+@font-face {
+  font-family: pokemonSolid;
+  src: url("Pokemon-Solid.otf");
+}
 
   body {
-    background: radial-gradient(circle, rgba(237, 240, 240, 0.219) 3%, rgba(59, 138, 148, 0.24) 55%, rgba(158, 154, 154, 0.137) 100%);
-    background-size: cover;
+    background-color: #ffcb05;
     color: #333333;
     margin-top: 5rem;
     display: flex;
@@ -14,20 +21,19 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color:  #228997;
-  }
+    -webkit-text-stroke: 2px #2a75bb; /* width and color */
+    font-family: pokemonSolid;
+    color: #ffcb05;
+    text-align: center;  }
   
-  .bg-steel {
-    background-color: #228997;
-  }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #2a75bb;
   }
   
   .site-header .navbar-nav .nav-link:hover {
-    color: #c7ca11;
-    border-bottom: #c7ca11 solid 1px;
+    color: #2a75bb;
+    border-bottom: #2a75bb solid 1px;
   }
   
   .site-header .navbar-nav .nav-link.active {
@@ -44,9 +50,9 @@
 
  }
   .content-section {
-    background: #ffffff;
+    background: #ffcb05;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #2a75bb;
     border-radius: 3px;
     margin-bottom: 20px;
   }
@@ -69,7 +75,7 @@
   .article-metadata {
     padding-bottom: 1px;
     margin-bottom: 4px;
-    border-bottom: 1px solid #990606
+    border-bottom: 1px solid #ffcb05
   }
   
   .article-metadata a:hover {
@@ -88,7 +94,7 @@
     width: 125px;
     margin-right: 20px;
     margin-bottom: 16px;
-    border: 1px #3a9722;
+    border: 1px #ffcb05;
   }
   .profpic:hover{
     border: rgb(44, 73, 80) solid;
@@ -98,7 +104,7 @@
   }
 
   .form-control{
-    color: blue;
+    color: #ffcb05;
   }
   .text-danger{
     font-size: medium;
@@ -109,11 +115,10 @@
     font-size: 10px;
   }
   .form-group{
-    color: #296e18;
+    color: #ffcb05;
     font-weight: bold;
     border-radius: 10px;
     object-fit: contain;
-    background: radial-gradient(90deg, rgba(129, 146, 201, 0.479) 3%, rgba(255, 255, 255, 0) 55%, rgba(255,255,255,0) 100%);
 
 
   }
