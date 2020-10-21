@@ -1,8 +1,8 @@
-from flask import render_template, request, Blueprint
+from flask import render_template,redirect, request, Blueprint
 from blog.models import Post
 from sqlalchemy import desc
 from flask_login import current_user, login_required
-
+from blog import db
 
 main = Blueprint('main', __name__)
 
@@ -21,8 +21,8 @@ def post_with_app():
             db.session.add(new_pokemon)
             db.session.commit()
             return redirect('/')
-        except:
-            return "Qualcosa è andato storto"
+        except Exception as e:
+            return str(e)
     else:
         page = request.args.get('page', 1, type=int)
         posts = Post.query.order_by(
