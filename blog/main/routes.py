@@ -22,7 +22,7 @@ def post_with_app():
             db.session.commit()
             return redirect('/')
         except Exception as e:
-            return str(e)
+            return render_template('errors/500.html', error=str(e))
     else:
         page = request.args.get('page', 1, type=int)
         posts = Post.query.order_by(
