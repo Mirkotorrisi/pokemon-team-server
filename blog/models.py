@@ -81,7 +81,7 @@ class Comment(db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_posted = db.Column(
-        db.DateTime(), nullable=False, default=datetime.utcnow)
+    db.DateTime(), nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     pokemon1 = db.Column(db.String(200), nullable=False)
     pokemon2 = db.Column(db.String(200), nullable=False)
