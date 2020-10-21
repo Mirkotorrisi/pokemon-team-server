@@ -46,7 +46,7 @@
         </nav>
     </header>
 
-    <main role="main" class="container">
+    <main role="main" class="container py-5">
         {% include "_flashmessages.html" %}
         <div class="row">
             <div class="col-md-8">
@@ -57,10 +57,9 @@
                 <div class="content-section">
                     <p class='text-muted'>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-light"><a href="{{url_for('main.top_posts')}}">Most
+                        <li class="list-group-item"><a href="{{url_for('main.top_posts')}}">Most
                                 voted</a></li>
-                        <li class="list-group-item list-group-item-light"><a
-                                href="{{url_for('main.most_commented')}}">Most commented</a></li>
+                        <li class="list-group-item"><a href="{{url_for('main.most_commented')}}">Most commented</a></li>
                     </ul>
 
                     </p>

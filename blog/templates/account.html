@@ -15,19 +15,14 @@
   {% from "_formhelpers.html" import render_field %}
   <h3>Account Info</h3>
 
-  <form
-    method="POST"
-    action="{{url_for('users.account')}}"
-    role="form"
-    enctype="multipart/form-data"
-  >
+  <form method="POST" action="{{url_for('users.account')}}" role="form" enctype="multipart/form-data">
     {{ form.hidden_tag() }} {{ render_field(form.username, class='form-control')
     }} {{ render_field(form.email, class='form-control') }} {{
     render_field(form.picture, class='form-control-file')}} {% if
     form.picture.errors %} {% for error in form.picture.errors %}
     <span class="text-danger">{{ error }}</span><br />
     {% endfor %}{% endif %}
-    <button type="submit" class="button">Modifica</button>
+    <button type="submit" class="button">Update</button>
   </form>
 </div>
 {% endblock %}

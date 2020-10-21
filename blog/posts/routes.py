@@ -17,9 +17,9 @@ def post(post_id):
                           author=current_user.username, post_id=post.id)
         db.session.add(comment)
         db.session.commit()
-        flash('Commento pubblicato con successo!', 'success')
+        flash('Comment published', 'success')
         return redirect(url_for('posts.post', post_id=post.id, comments=post.comments))
-    return render_template('post.html', title=post.title, post=post, form=form, comments=post.comments, legend="Commenti")
+    return render_template('post.html', pokemon1=post.pokemon1, pokemon2=post.pokemon2, pokemon3=post.pokemon3, post=post, form=form, comments=post.comments, legend="Comments")
 
 
 @posts.route('/post/<int:post_id>/delete', methods=['POST'])
@@ -30,5 +30,5 @@ def delete_post(post_id):
         abort(403)
     db.session.delete(post)
     db.session.commit()
-    flash('Post eliminato', 'info')
+    flash('Post deleted', 'info')
     return redirect(url_for('main.index'))
