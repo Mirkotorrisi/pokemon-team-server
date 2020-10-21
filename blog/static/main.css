@@ -1,6 +1,6 @@
 ::selection {
   background-color: rgb(57, 87, 88);
-  color: rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
 }
 @font-face {
   font-family: pokemonHollow;
@@ -11,148 +11,171 @@
   src: url("Pokemon-Solid.otf");
 }
 
-  body {
-    background-color: #ffcb05;
-    color: #333333;
-    margin-top: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    -webkit-text-stroke: 2px #2a75bb; /* width and color */
-    font-family: pokemonSolid;
-    color: #ffcb05;
-    text-align: center;  }
-  
-  
-  .site-header .navbar-nav .nav-link {
-    color: #2a75bb;
-  }
-  
-  .site-header .navbar-nav .nav-link:hover {
-    color: #2a75bb;
-    border-bottom: #2a75bb solid 1px;
-  }
-  
-  .site-header .navbar-nav .nav-link.active {
-    font-weight: 500;
-  }
-   .containerC{
-   width: 100px;
-   height: 50px;
-   position: relative;
- } 
- .formContent{
-   height: 400px;
+body {
+  background-color: #ffcb05;
+  color: #333333;
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -webkit-text-stroke: 2px #2a75bb; /* width and color */
+  font-family: pokemonSolid;
+  color: #ffcb05;
+  text-align: center;
+}
 
- }
-  .content-section {
-    background: #ffcb05;
-    padding: 10px 20px;
-    border: 1px solid #2a75bb;
-    border-radius: 3px;
-    margin-bottom: 20px;
-  }
-  
-  .article-title {
-    color: #30718b;
-  }
-  
-  .article-content {
-    word-break: break-all;
-    white-space: pre-line;
-    margin: auto;
-  }
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #ffcb05
-  }
-  
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-    border: 1px #ffcb05;
-  }
-  .profpic:hover{
-    border: rgb(44, 73, 80) solid;
-  }
-  .account-heading {
-    font-size: 2.5rem;
-  }
+.site-header .navbar-nav .nav-link {
+  color: #2a75bb;
+  box-sizing: border-box;
+  height: 100%;
+}
 
-  .form-control{
-    color: #ffcb05;
-  }
-  .text-danger{
-    font-size: medium;
-    font-weight: bold;
-  }
-  .alert.error{
-    color: chocolate;
-    font-size: 10px;
-  }
-  .form-group{
-    color: #ffcb05;
-    font-weight: bold;
-    border-radius: 10px;
-    object-fit: contain;
+.site-header .navbar-nav .nav-link:hover {
+  color: #2a75bb;
+  border-bottom: #2a75bb solid 1px;
+}
+.navbar {
+  border: 1px solid #2a75bb;
+  box-sizing: border-box;
+}
+.navbar-brand {
+  -webkit-text-stroke: 2px #2a75bb; /* width and color */
+  font-family: pokemonSolid;
+  color: #ffcb05;
+  text-align: center;
+}
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+.containerC {
+  width: 100px;
+  height: 50px;
+  position: relative;
+}
+.formContent {
+  height: 400px;
+}
+.content-section {
+  background: #ffcb05;
+  padding: 10px 20px;
+  border: 2px solid #2a75bb;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
 
+.article-title {
+  -webkit-text-stroke: 2px #2a75bb; /* width and color */
+  font-family: pokemonSolid;
+  color: #ffcb05;
+  text-align: center;
+}
 
-  }
+.article-content {
+  word-break: break-all;
+  white-space: pre-line;
+  margin: auto;
+}
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #ffcb05;
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+  border: 1px #2a75bb;
+}
+.profpic:hover {
+  border: rgb(44, 73, 80) solid;
+}
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.form-control {
+  color: #2a75bb;
+}
+.text-danger {
+  font-size: medium;
+  font-weight: bold;
+}
+.alert.error {
+  color: chocolate;
+  font-size: 10px;
+}
+.form-group {
+  color: #2a75bb;
+  font-weight: bold;
+  border-radius: 10px;
+  object-fit: contain;
+}
 #cuore {
   width: 20%;
   height: 20%;
 }
 .button {
-  color:  #228997;
+  color: #2a75bb;
   border-radius: 7px;
-  border:  #228997;
+  border: #228997;
 }
 
-.button:hover{
-  text-shadow: #00C0FF;
-  background-image: linear-gradient(45deg, rgba(0, 238, 255, 0) 0%, rgba(23, 131, 134, 0.432) 30%, rgba(79, 246, 252, 0) 100%);
+.button:hover {
+  text-shadow: #2a75bb;
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 238, 255, 0) 0%,
+    rgba(23, 131, 134, 0.432) 30%,
+    rgba(79, 246, 252, 0) 100%
+  );
 }
-.containerC{
+.containerC {
   width: 100px;
   height: 50px;
   position: relative;
-  background-image: url("C:\Users\LuLele\Desktop\flask2\blog\static\profile_pic\3ea673f124d8cd02CF_Mirko_Torrisi.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
 
-} 
-
-#likes{
-  background-image: linear-gradient(90deg, rgba(79, 148, 144, 0.144) 49%, rgba(79, 252, 88, 0) 100%);
+#likes {
+  background-image: linear-gradient(
+    90deg,
+    rgba(79, 148, 144, 0.144) 49%,
+    rgba(79, 252, 88, 0) 100%
+  );
   box-shadow: solid;
 }
 #active {
-  color: #c7ca11;
+  color: #ff0000;
 }
-#comments{
+
+#comments {
   margin: 2%;
 }
