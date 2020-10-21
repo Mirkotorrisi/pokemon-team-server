@@ -15,7 +15,7 @@
         </div>
     </div>
 </article>
-<div class="px-0 mx-0 col-12" id="comments">
+<div class="px-0 mx-0 ">
 
     {% from "_formhelpers.html" import render_field %}
 
@@ -31,10 +31,10 @@
     </form>
 </div>
 {% endif %}
-<legend class="border-bottom mb-4 m-auto">
+<legend class="border-bottom mb-4 ">
     <h5>{{ legend }}:</h5>
 </legend>
-<div class="container col-12 bg-white">
+<div class="container bg-white">
 
     {% for comment in comments %}
 
@@ -46,7 +46,6 @@
 
     {% endfor %}
 </div>
-
 
 
 {% endblock %}
