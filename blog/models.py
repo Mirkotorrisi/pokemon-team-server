@@ -83,15 +83,26 @@ class Post(db.Model):
     date_posted = db.Column(
     db.DateTime(), nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    pokemon1 = db.Column(db.String(200), nullable=False)
-    pokemon2 = db.Column(db.String(200), nullable=False)
-    pokemon3 = db.Column(db.String(200), nullable=False)
+    pokemon1 = db.relationship('Pokemon', backref='post', lazy='dynamic')
+    pokemon2 = db.relationship('Pokemon', backref='post', lazy='dynamic')
+    pokemon3 = db.relationship('Pokemon', backref='post', lazy='dynamic')
     likes = db.relationship('PostLike', backref='post', lazy='dynamic')
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}', '{self.likes.count()}')"
 
+class Pokemon(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hp = db.Column(db.Integer, nullable=False)
+    attack = db.Column(db.Integer, nullable=False)
+    defense = db.Column(db.Integer, nullable=False)
+    special_attack = db.Column(db.Integer, nullable=False)
+    special_defense = db.Column(db.Integer, nullable=False)
+    speed = db.Column(db.Integer, nullable=False)
+    type1 = db.Column(db.String(100), nullable=False)
+    type2 = db.Column(db.String(100), nullable=False)
+    sprite = db.Column(db.String(150), nullable=False)
 
 def init_db():
     db.create_all()

@@ -43,6 +43,7 @@ h6 {
   border-bottom: #2a75bb solid 1px;
 }
 .navbar {
+  background-color: white;
   border: 1px solid #2a75bb;
   box-sizing: border-box;
 }
@@ -70,13 +71,12 @@ h6 {
   border-bottom: 2px solid #2a75bb;
   border-radius: 3px;
 }
-.article-author{
+.article-author {
   -webkit-text-stroke: 2px #2a75bb; /* width and color */
   font-family: pokemonSolid;
   color: #ffcb05;
-  font-size:1.5em;
+  font-size: 1.5em;
 }
-
 
 .article-content {
   word-break: break-all;
@@ -131,13 +131,13 @@ h6 {
   color: chocolate;
   font-size: 10px;
 }
-.btn-info{
+.btn-info {
   background-color: #2a75bb;
 }
-.list-group{
+.list-group {
   background: none;
 }
-.btn-outline-info{
+.btn-outline-info {
   border-color: #2a75bb;
 }
 .form-group {
@@ -181,12 +181,10 @@ h6 {
   );
   box-shadow: solid;
 }
-a:hover{
+a:hover {
   color: #ff4747;
   text-decoration: none;
-
 }
 #active {
   color: #ff0000;
 }
-
