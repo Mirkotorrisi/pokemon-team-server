@@ -1,4 +1,4 @@
-from flask import render_template,redirect, request, Blueprint
+from flask import render_template,redirect, request, Blueprint, abort
 from blog.models import Post
 from sqlalchemy import desc
 from flask_login import current_user, login_required
@@ -8,9 +8,8 @@ main = Blueprint('main', __name__)
 
 
 @main.route('/', methods=['POST'])
-@login_required
 def post_with_app():
-    if request.method == 'POST':
+    if current_user.is_authenticated:
         pokemon1 = request.json['pokemon1']
         pokemon2 = request.json['pokemon2']
         pokemon3 = request.json['pokemon3']
@@ -24,10 +23,8 @@ def post_with_app():
         except Exception as e:
             return render_template('errors/500.html', error=str(e))
     else:
-        page = request.args.get('page', 1, type=int)
-        posts = Post.query.order_by(
-            Post.date_posted.desc()).paginate(page=page, per_page=5)
-        return render_template('index.html', title="Home", posts=posts)
+        abort(403)
+
 
 @main.route('/', methods=['GET'])
 def index():
