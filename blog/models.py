@@ -83,9 +83,7 @@ class Post(db.Model):
     date_posted = db.Column(
     db.DateTime(), nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    pokemon1 = db.relationship('Pokemon', backref='post', lazy='dynamic')
-    pokemon2 = db.relationship('Pokemon', backref='post', lazy='dynamic')
-    pokemon3 = db.relationship('Pokemon', backref='post', lazy='dynamic')
+    pokemons = db.relationship('Pokemon', backref='post', lazy='dynamic')
     likes = db.relationship('PostLike', backref='post', lazy='dynamic')
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
