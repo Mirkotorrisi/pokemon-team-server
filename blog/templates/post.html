@@ -1,51 +1,51 @@
-{% extends 'layout.html' %}
-{% block content %}
+{% extends 'layout.html' %} {% block content %}
 <article class="media content-section">
-    <img class='rounded-circle article-img'
-        src='{{ url_for("static", filename="profile_pic/"+post.author.image_file) }}'>
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.author.username }}</a>
-            <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</small>
-        </div>
-        <div class="container-fluid">
-            <img src="{{post.pokemon1}}" />
-            <img src="{{post.pokemon2}}" />
-            <img src="{{post.pokemon3}}" />
-        </div>
+  <img
+    class="rounded-circle article-img"
+    src='{{ url_for("static", filename="profile_pic/"+post.author.image_file) }}'
+  />
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{{ url_for('posts.post', post_id=post.id) }}"
+        >{{ post.author.username }}</a
+      >
+      <small class="text-muted"
+        >{{ post.date_posted.strftime('%d-%m-%Y') }}</small
+      >
     </div>
+    <div class="container-fluid">
+      <img src="{{post.pokemon1.sprite}}" />
+      <img src="{{post.pokemon2.sprite}}" />
+      <img src="{{post.pokemon3.sprite}}" />
+    </div>
+  </div>
 </article>
-<div class="px-0 mx-0 ">
+<div class="px-0 mx-0">
+  {% from "_formhelpers.html" import render_field %} {% if
+  current_user.is_authenticated %}
 
-    {% from "_formhelpers.html" import render_field %}
+  <form method="POST" action="" role="form" enctype="multipart/form-data">
+    {{ form.hidden_tag() }} {{ render_field(form.body, class='form-control') }}
 
-
-    {% if current_user.is_authenticated %}
-
-    <form method="POST" action="" role="form" enctype="multipart/form-data">
-
-        {{ form.hidden_tag() }}
-        {{ render_field(form.body, class='form-control') }}
-
-        <button type="submit" class="button">Pubblica</button>
-    </form>
+    <button type="submit" class="button">Pubblica</button>
+  </form>
 </div>
 {% endif %}
-<legend class="border-bottom mb-4 ">
-    <h5>{{ legend }}:</h5>
+<legend class="border-bottom mb-4">
+  <h5>{{ legend }}:</h5>
 </legend>
 <div class="container bg-white">
+  {% for comment in comments %}
 
-    {% for comment in comments %}
-
-    <div class="border-bottom border-info">
-        <h5 class="border-bottom pb-3">{{comment.author}}</h5>
-        {{comment.content}}
-        <div class="d-flex flex-row-reverse">il {{ comment.date_posted.strftime('%d-%m-%Y') }}</div>
+  <div class="border-bottom border-info">
+    <h5 class="border-bottom pb-3">{{comment.author}}</h5>
+    {{comment.content}}
+    <div class="d-flex flex-row-reverse">
+      il {{ comment.date_posted.strftime('%d-%m-%Y') }}
     </div>
+  </div>
 
-    {% endfor %}
+  {% endfor %}
 </div>
-
 
 {% endblock %}

@@ -94,6 +94,7 @@ class Post(db.Model):
 
 class Pokemon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     hp = db.Column(db.Integer, nullable=False)
     attack = db.Column(db.Integer, nullable=False)
     defense = db.Column(db.Integer, nullable=False)

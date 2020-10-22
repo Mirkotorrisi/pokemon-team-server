@@ -1,5 +1,5 @@
 from flask import render_template,redirect, request, Blueprint, abort
-from blog.models import Post
+from blog.models import Post, Pokemon
 from sqlalchemy import desc
 from flask_login import current_user, login_required
 from blog import db
@@ -10,14 +10,25 @@ main = Blueprint('main', __name__)
 @main.route('/', methods=['POST'])
 def post_with_app():
     if current_user.is_authenticated:
-        pokemon1 = request.json['pokemon1']
-        pokemon2 = request.json['pokemon2']
-        pokemon3 = request.json['pokemon3']
-        new_pokemon = Post(pokemon1=pokemon1, pokemon2=pokemon2,
-                           pokemon3=pokemon3, author=current_user)
+        post = Post(author=current_user)
+        pokemon1 = Pokemon(hp = request.json['pokemon1']['hp'], attack = request.json['pokemon1']['attack'],
+        defense = request.json['pokemon1']['defense'],special_attack = request.json['pokemon1']['special_attack'],
+        special_defense = request.json['pokemon1']['special_defense'],speed = request.json['pokemon1']['speed'],
+        sprite = request.json['pokemon1']['sprite'],type1 = request.json['pokemon1']['type1'],type2 = request.json['pokemon1']['type2'],
+        post_id=post.id)
+        
+        pokemon2 = Pokemon(hp = request.json['pokemon2']['hp'], attack = request.json['pokemon2']['attack'],
+        defense = request.json['pokemon2']['defense'],special_attack = request.json['pokemon2']['special_attack'],
+        special_defense = request.json['pokemon2']['special_defense'],speed = request.json['pokemon2']['speed'],
+        sprite = request.json['pokemon2']['sprite'],type1 = request.json['pokemon2']['type1'],type2 = request.json['pokemon1']['type2'],post_id=post.id)
+        
+        pokemon3 = Pokemon(hp = request.json['pokemon3']['hp'], attack = request.json['pokemon3']['attack'],
+        defense = request.json['pokemon3']['defense'],special_attack = request.json['pokemon3']['special_attack'],
+        special_defense = request.json['pokemon3']['special_defense'],speed = request.json['pokemon3']['speed'],
+        sprite = request.json['pokemon3']['sprite'],type1 = request.json['pokemon3']['type1'],type2 = request.json['pokemon1']['type2'],post_id=post.id)
 
         try:
-            db.session.add(new_pokemon)
+            db.session.add(post)
             db.session.commit()
             return redirect('/')
         except Exception as e:
