@@ -40,12 +40,38 @@
       {% for pokemon in post.pokemons %}
       <div class="d-flex flex-column">
         <img src="{{pokemon.sprite}}" />
-        <p>Hp = {{pokemon.hp}}</p>
-        <p>Def = {{pokemon.defense}}</p>
-        <p>Atk = {{pokemon.attack}}</p>
-        <p>Spec Atk = {{pokemon.special_attack}}</p>
-        <p>Spec Def = {{pokemon.special_defense}}</p>
-        <p>Speed = {{pokemon.speed}}</p>
+        <div class="stats">
+          <p><i class="far fa-heart healt-points"></i> = {{pokemon.hp}}</p>
+          <p>
+            <span class="material-icons defense"> security </span> =
+            {{pokemon.defense}}
+          </p>
+          <p>
+            <img
+              src="{{url_for('static',filename='images/atk.png'}}"
+              class="icon attack"
+            />
+            = {{pokemon.attack}}
+          </p>
+          <p>
+            <img
+              src="{{url_for('static',filename='images/atk.png'}}"
+              class="icon spec-attack"
+            />
+            = {{pokemon.special_attack}}
+          </p>
+          <p>
+            <span class="material-icons spec-defense"> security </span> =
+            {{pokemon.special_defense}}
+          </p>
+          <p>
+            <img
+              src="{{url_for('static',filename='images/speed.png'}}"
+              class="icon speed"
+            />
+            = {{pokemon.speed}}
+          </p>
+        </div>
       </div>
       {%endfor%}
     </div>

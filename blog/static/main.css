@@ -188,3 +188,29 @@ a:hover {
 #active {
   color: #ff0000;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+}
+.attack {
+  color: #ff0000;
+}
+.defense {
+  color: greenyellow;
+}
+.spec-attackk {
+  color: blueviolet;
+}
+.spec-defense {
+  color: chocolate;
+}
+.healt-points {
+  color: deeppink;
+}
+.speed {
+  color: cornflowerblue;
+}
+.stats {
+  max-height: 200px;
+  overflow-y: scroll;
+}
