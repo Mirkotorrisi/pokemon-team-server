@@ -19,7 +19,7 @@ def post(post_id):
         db.session.commit()
         flash('Comment published', 'success')
         return redirect(url_for('posts.post', post_id=post.id, comments=post.comments))
-    return render_template('post.html', pokemon1=post.pokemon1, pokemon2=post.pokemon2, pokemon3=post.pokemon3, post=post, form=form, comments=post.comments, legend="Comments")
+    return render_template('post.html', pokemons=post.pokemons, post=post, form=form, comments=post.comments, legend="Comments")
 
 
 @posts.route('/post/<int:post_id>/delete', methods=['POST'])

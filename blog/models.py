@@ -91,9 +91,10 @@ class Post(db.Model):
         return f"Post('{self.title}', '{self.date_posted}', '{self.likes.count()}')"
 
 class Pokemon(db.Model):
+    __tablename__ = 'pokemon'
     id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     hp = db.Column(db.Integer, nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     attack = db.Column(db.Integer, nullable=False)
     defense = db.Column(db.Integer, nullable=False)
     special_attack = db.Column(db.Integer, nullable=False)
