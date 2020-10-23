@@ -10,34 +10,35 @@ main = Blueprint('main', __name__)
 @main.route('/', methods=['POST'])
 def post_with_app():
     if current_user.is_authenticated:
-        post = Post(author=current_user)
-
-
-        try:
-            db.session.add(post)
-            db.session.flush()
-            pokemon1 = Pokemon(hp = request.json['pokemon1']['hp'], attack = request.json['pokemon1']['attack'],
-            defense = request.json['pokemon1']['defense'],special_attack = request.json['pokemon1']['special_attack'],
-            special_defense = request.json['pokemon1']['special_defense'],speed = request.json['pokemon1']['speed'],
-            sprite = request.json['pokemon1']['sprite'],type1 = request.json['pokemon1']['type1'],type2 = request.json['pokemon1']['type2'],
-            post_id=post.id)
-        
-            pokemon2 = Pokemon(hp = request.json['pokemon2']['hp'], attack = request.json['pokemon2']['attack'],
-            defense = request.json['pokemon2']['defense'],special_attack = request.json['pokemon2']['special_attack'],
-            special_defense = request.json['pokemon2']['special_defense'],speed = request.json['pokemon2']['speed'],
-            sprite = request.json['pokemon2']['sprite'],type1 = request.json['pokemon2']['type1'],type2 = request.json['pokemon2']['type2'],post_id=post.id)
-        
-            pokemon3 = Pokemon(hp = request.json['pokemon3']['hp'], attack = request.json['pokemon3']['attack'],
-            defense = request.json['pokemon3']['defense'],special_attack = request.json['pokemon3']['special_attack'],
-            special_defense = request.json['pokemon3']['special_defense'],speed = request.json['pokemon3']['speed'],
-            sprite = request.json['pokemon3']['sprite'],type1 = request.json['pokemon3']['type1'],type2 = request.json['pokemon3']['type2'],post_id=post.id)
-            db.session.add(pokemon1)
-            db.session.add(pokemon2)
-            db.session.add(pokemon3)
-            db.session.commit()
-            return redirect('/')
-        except Exception as e:
-            return render_template('errors/500.html', error=str(e))
+        if len(current_user.posts) > 0:
+            abort(405)
+        else:
+            post = Post(author=current_user)
+            try:
+                db.session.add(post)
+                db.session.flush()
+                pokemon1 = Pokemon(hp = request.json['pokemon1']['hp'], attack = request.json['pokemon1']['attack'],
+                defense = request.json['pokemon1']['defense'],special_attack = request.json['pokemon1']['special_attack'],
+                special_defense = request.json['pokemon1']['special_defense'],speed = request.json['pokemon1']['speed'],
+                sprite = request.json['pokemon1']['sprite'],type1 = request.json['pokemon1']['type1'],type2 = request.json['pokemon1']['type2'],
+                post_id=post.id)
+            
+                pokemon2 = Pokemon(hp = request.json['pokemon2']['hp'], attack = request.json['pokemon2']['attack'],
+                defense = request.json['pokemon2']['defense'],special_attack = request.json['pokemon2']['special_attack'],
+                special_defense = request.json['pokemon2']['special_defense'],speed = request.json['pokemon2']['speed'],
+                sprite = request.json['pokemon2']['sprite'],type1 = request.json['pokemon2']['type1'],type2 = request.json['pokemon2']['type2'],post_id=post.id)
+            
+                pokemon3 = Pokemon(hp = request.json['pokemon3']['hp'], attack = request.json['pokemon3']['attack'],
+                defense = request.json['pokemon3']['defense'],special_attack = request.json['pokemon3']['special_attack'],
+                special_defense = request.json['pokemon3']['special_defense'],speed = request.json['pokemon3']['speed'],
+                sprite = request.json['pokemon3']['sprite'],type1 = request.json['pokemon3']['type1'],type2 = request.json['pokemon3']['type2'],post_id=post.id)
+                db.session.add(pokemon1)
+                db.session.add(pokemon2)
+                db.session.add(pokemon3)
+                db.session.commit()
+                return redirect('/')
+            except Exception as e:
+                return render_template('errors/500.html', error=str(e))
     else:
         abort(403)
 
