@@ -1,6 +1,6 @@
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app
+from flask import current_app, jsonify
 from flask_login import current_user
 from blog import db, login_manager
 from flask_login import UserMixin
@@ -81,14 +81,15 @@ class Comment(db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_posted = db.Column(
-    db.DateTime(), nullable=False, default=datetime.utcnow)
+        db.DateTime(), nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     pokemons = db.relationship('Pokemon', backref='post', lazy='dynamic')
     likes = db.relationship('PostLike', backref='post', lazy='dynamic')
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}', '{self.likes.count()}')"
+        return f"Post('{self.pokemons}', '{self.date_posted}', '{self.likes.count()}')"
+
 
 class Pokemon(db.Model):
     __tablename__ = 'pokemon'
@@ -103,6 +104,10 @@ class Pokemon(db.Model):
     type1 = db.Column(db.String(100), nullable=False)
     type2 = db.Column(db.String(100), nullable=False)
     sprite = db.Column(db.String(150), nullable=False)
+
+    def __repr__(self):
+        return f"{self.id}:('{self.post_id}', '{self.date_posted}', '{self.likes.count()}')"
+
 
 def init_db():
     db.create_all()
