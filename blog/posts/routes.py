@@ -42,15 +42,15 @@ def get_all_posts_json():
     for post in posts:
         pokemons = []
         for pokemon in post.pokemons:
-            pokemon_json = dict(post_id=pokemon.post_id, stats=dict(
-                _0=dict(base_stat=pokemon.hp, stat=dict(name="hp")),
-                _1=dict(base_stat=pokemon.attack, stat=dict(name="attack")),
-                _2=dict(base_stat=pokemon.defense, stat=dict(name="defense")),
-                _3=dict(base_stat=pokemon.special_attack, stat=dict(name="special-attack")),
-                _4=dict(base_stat=pokemon.special_defense, stat=dict(name="special-defense")),
-                _5=dict(base_stat=pokemon.speed, stat=dict(name="speed"))),
+            pokemon_json = dict(post_id=pokemon.post_id, stats=[
+                dict(base_stat=pokemon.hp, stat=dict(name="hp")),
+                dict(base_stat=pokemon.attack, stat=dict(name="attack")),
+                dict(base_stat=pokemon.defense, stat=dict(name="defense")),
+                dict(base_stat=pokemon.special_attack, stat=dict(name="special-attack")),
+                dict(base_stat=pokemon.special_defense, stat=dict(name="special-defense")),
+                dict(base_stat=pokemon.speed, stat=dict(name="speed"))],
                 sprites=dict(front_default=pokemon.sprite), 
-                types=dict(_0=dict(type=dict(name=pokemon.type1)),_1=dict(type=dict(name=pokemon.type2))))
+                types=[dict(type=dict(name=pokemon.type1)),dict(type=dict(name=pokemon.type2))])
             pokemons.append(pokemon_json)
         json_posts.append(dict(post_id=post.id, wins=post.wins, loses=post.loses, pokemons=pokemons,
                                user_id=post.user_id, date_posted=post.date_posted))
