@@ -42,10 +42,17 @@ def get_all_posts_json():
     for post in posts:
         pokemons = []
         for pokemon in post.pokemons:
-            pokemon_json = dict(post_id=pokemon.post_id, hp=pokemon.hp, attack=pokemon.attack, defense=pokemon.defense, special_attack=pokemon.special_attack,
-                                special_defense=pokemon.special_defense, speed=pokemon.speed, sprite=pokemon.sprite, type1=pokemon.type1, type2=pokemon.type2)
+            pokemon_json = dict(post_id=pokemon.post_id, stats=dict(
+                _0=dict(base_stat=pokemon.hp, stat=dict(name="hp")),
+                _1=dict(base_stat=pokemon.attack, stat=dict(name="attack")),
+                _2=dict(base_stat=pokemon.defense, stat=dict(name="defense")),
+                _3=dict(base_stat=pokemon.special_attack, stat=dict(name="special-attack")),
+                _4=dict(base_stat=pokemon.special_defense, stat=dict(name="special-defense")),
+                _5=dict(base_stat=pokemon.speed, stat=dict(name="speed"))),
+                sprites=dict(front_default=pokemon.sprite), 
+                types=dict(_0=dict(type=dict(name=pokemon.type1)),_1=dict(type=dict(name=pokemon.type2))))
             pokemons.append(pokemon_json)
-        json_posts.append(dict(post_id=post.id, pokemons=pokemons,
+        json_posts.append(dict(post_id=post.id, wins=post.wins, loses=post.loses, pokemons=pokemons,
                                user_id=post.user_id, date_posted=post.date_posted))
     return jsonify(json_posts)
 
