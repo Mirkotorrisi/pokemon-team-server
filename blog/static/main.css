@@ -193,6 +193,14 @@ a:hover {
   height: 10px;
   font-size: 20px;
 }
+.navbar-brand {
+  margin-top: -11px;
+}
+.fa-bars::before {
+  -webkit-text-stroke: 1px #2a75bb; /* width and color */
+
+  color: #ffcb05;
+}
 .attack {
   color: #ff0000;
 }

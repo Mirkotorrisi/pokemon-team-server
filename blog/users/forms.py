@@ -1,3 +1,4 @@
+from flask import flash
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
@@ -5,8 +6,19 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 from flask_login import current_user
 from blog.models import User
 
+def my_strip_filter(value):
+    if value is not None and hasattr(value, 'strip'):
+        return value.strip()
+    return value
+class MyBaseForm(FlaskForm):        
+    class Meta:
+        def bind_field(self, form, unbound_field, options):
+            filters = unbound_field.kwargs.get('filters', [])
+            if my_strip_filter not in filters:
+                filters.append(my_strip_filter)
+            return unbound_field.bind(form=form, filters=filters, **options)
 
-class RegistrationForm(FlaskForm):
+class RegistrationForm(MyBaseForm):
     username = StringField('Username', validators=[
                            DataRequired(), Length(min=2, max=10)])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -29,7 +41,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError()
 
 
-class LoginForm(FlaskForm):
+class LoginForm(MyBaseForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[
                              DataRequired(), Length(min=6)])
@@ -37,7 +49,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log In')
 
 
-class UpdateAccountForm(FlaskForm):
+class UpdateAccountForm(MyBaseForm):
     username = StringField('Username', validators=[
                            DataRequired(), Length(min=2, max=10)])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -60,7 +72,7 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError()
 
 
-class RequestResetForm(FlaskForm):
+class RequestResetForm(MyBaseForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Reset Password', )
 
@@ -71,7 +83,7 @@ class RequestResetForm(FlaskForm):
             raise ValidationError()
 
 
-class ResetPasswordForm(FlaskForm):
+class ResetPasswordForm(MyBaseForm):
     password = PasswordField('Password', validators=[
                              DataRequired(), Length(min=6)])
     conf_password = PasswordField('Confirm Password', validators=[

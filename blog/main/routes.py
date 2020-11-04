@@ -60,12 +60,13 @@ def about():
 def top_posts():
     posts = Post.query.all()
     top_posts = []
-    for i in range(3):
-        top = max(post.likes.count() for post in posts)
-        for post in posts:
-            if post.likes.count() >= top:
-                top_posts.append(post)
-                posts.remove(post)
+    if posts.length >=3:
+        for i in range(3):
+            top = max(post.likes.count() for post in posts) 
+            for post in posts:
+                if post.likes.count() >= top:
+                    top_posts.append(post)
+                    posts.remove(post)
 
     return render_template('top.html', title="Top", posts=top_posts)
 
@@ -73,14 +74,14 @@ def top_posts():
 @main.route('/most_commented')
 def most_commented():
     posts = Post.query.all()
-
     top_posts = []
-    for i in range(3):
-        top = max(post.comments.count() for post in posts)
-        for post in posts:
-            print(post)
-            if post.comments.count() >= top:
-                top_posts.append(post)
-                posts.remove(post)
+    if posts.length >=3:
+        for i in range(3):
+            top = max(post.comments.count() for post in posts)
+            for post in posts:
+                print(post)
+                if post.comments.count() >= top:
+                    top_posts.append(post)
+                    posts.remove(post)
 
     return render_template('top.html', title="Top", posts=top_posts)

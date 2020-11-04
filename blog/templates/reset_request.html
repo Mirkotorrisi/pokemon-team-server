@@ -1,12 +1,9 @@
-{% extends 'layout.html' %}
-{% block content %}
-{% from "_formhelpers.html" import render_field %}
+{% extends 'layout.html' %} {% block content %} {% from "_formhelpers.html"
+import render_field %}
 <legend class="border-bottom mb-4">Reset password request</legend>
 <form method="POST" action="{{url_for('users.reset_request')}}" role="form">
+  {{ form.hidden_tag() }} {{ render_field(form.email, class='form-control') }}
 
-    {{ form.hidden_tag() }}
-    {{ render_field(form.email, class='form-control') }}
-
-    <button type="submit" class="btn btn-primary">Invia</button>
+  <button type="submit" class="btn btn-primary">Send</button>
 </form>
 {% endblock %}
